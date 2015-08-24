@@ -1,0 +1,35 @@
+{
+  "name": "filezilla-checker",
+  "version": "0.1.0",
+  "description": "Checking if the servers are up or not",
+  "main": "cli.js",
+  "bin": {
+    "filezilla-check": "./bin/filezilla-check"
+  },
+  "dependencies": {
+    "async": "*",
+    "cli-table": "^0.3.1",
+    "commander": "^2.8.1",
+    "lodash": "*",
+    "portscanner": "*",
+    "progress": "^1.1.8",
+    "xml2js": "*"
+  },
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-eslint": "^0.14.0",
+    "gulp-shell": "^0.4.2",
+    "gulp-watch": "^4.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ftp",
+    "filezilla"
+  ],
+  "author": "j3lte",
+  "license": "MIT"
+}
