@@ -14,7 +14,26 @@ $ npm i filezilla-check -g
 
     filezilla-check [options] [sitemanager.xml]
 
-See [client output](https://github.com/j3lte/filezilla-check/blob/master/docs/cli.md)
+See [help](https://github.com/j3lte/filezilla-check/blob/master/docs/cli.md)
+
+## Output
+
+```
+
+  Checking servers [=====================================================] 100% 0.0s
+
+┌────────────────────────────────────────────────────────────┬─────────────────────────┬─────────────────────────┐
+│ Name                                                       │ Ip                      │ Status                  │
+├────────────────────────────────────────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Test-server 1                                              │ xxx.xxx.xxx.xxx         │ open                    │
+│ Test-server 2                                              │ xxx.xxx.xxx.xxx         │ open                    │
+│ Test-server 3                                              │ xxx.xxx.xxx.xxx         │ closed                  │
+├────────────────────────────────────────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Total: 3, Open: 2, Closed: 1                               │                         │                         │
+└────────────────────────────────────────────────────────────┴─────────────────────────┴─────────────────────────┘
+
+
+```
 
 ## Contributing
 
