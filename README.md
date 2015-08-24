@@ -1,4 +1,4 @@
-# node-iptools [![NPM version](https://badge.fury.io/js/filezilla-check.svg)](http://badge.fury.io/js/filezilla-check)
+# filezilla-check [![NPM version](https://badge.fury.io/js/filezilla-check.svg)](http://badge.fury.io/js/filezilla-check)
 
 > Check ftp servers from a Filezilla sitemanager.xml
 
