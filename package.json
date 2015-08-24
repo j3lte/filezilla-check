@@ -31,5 +31,9 @@
     "filezilla"
   ],
   "author": "j3lte",
+  "repository": "j3lte/filezilla-check",
+  "bugs": {
+    "url": "https://github.com/j3lte/filezilla-check/issues"
+  },
   "license": "MIT"
 }
