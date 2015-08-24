@@ -2,7 +2,7 @@
 
 > Check ftp servers from a Filezilla sitemanager.xml
 
-## Intall
+## Install
 
 Install with [npm](https://www.npmjs.com/)
 
