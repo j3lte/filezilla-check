@@ -2,7 +2,7 @@
 
 ```
 
-  Usage: cli [options]
+  Usage: filezilla-check [options] <sitemanager.xml>
 
   Options:
 

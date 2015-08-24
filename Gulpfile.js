@@ -15,7 +15,7 @@ var commands = {
   docs: [
     'echo "## Output filezilla-check\n" > ./docs/cli.md;',
     'echo "\\\`\\\`\\\`" >> ./docs/cli.md;',
-    'node ./cli.js -h >> ./docs/cli.md;',
+    'node ./bin/filezilla-check -h >> ./docs/cli.md;',
     'echo "\\\`\\\`\\\`" >> ./docs/cli.md;'
   ],
   shrinkwrap: [

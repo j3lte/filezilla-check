@@ -41,6 +41,7 @@ var CONCURRENT_REQUESTS = 10,
 
 program
   .version(version)
+  .usage('[options] <sitemanager.xml>')
   .option('-t, --timeout <n>', 'Timeout in milliseconds', parseInt)
   .option('-s, --sort <sort>', 'Sort by (ip|name|status) default:ip', 'ip')
   .parse(process.argv);
