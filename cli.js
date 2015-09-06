@@ -17,7 +17,8 @@ var fs = require('fs'),
   program = require('commander'),
   version = require('./package').version,
   ProgressBar = require('progress'),
-  Table = require('cli-table');
+  Table = require('cli-table'),
+  IP = require('ip');
 
 var CONCURRENT_REQUESTS = 10,
   serverList = [],
@@ -43,6 +44,7 @@ program
   .usage('[options] <sitemanager.xml>')
   .option('-t, --timeout <n>', 'Timeout in milliseconds', parseInt)
   .option('-s, --sort <sort>', 'Sort by (' + sortByKeys.join('|') + ') default:' + defaultSort, defaultSort)
+  .option('-i, --ip <IP ADDRESS>', 'Test a single ip address')
   .parse(process.argv);
 
 function exit() {
@@ -50,22 +52,17 @@ function exit() {
   process.exit(1);
 }
 
-function getIptoNumeric (host) {
-  var addrArray = host.split('.'),
-      num = 0;
-
-  for (var i = 0; i < addrArray.length; i++) {
-    var power = 3 - i;
-    num += ((parseInt(addrArray[i]) % 256 * Math.pow(256, power)));
-  }
-  return num;
-}
-
 function displayTable() {
+  var firstKey = _.first(_.pluck(keys, 'key')),
+      total = 'Total: ' + status.total + ', Open: ' + status.open + ', Closed: ' + status.closed;
+
   _.each(keys, function (key) {
     key.max = _.max(serverList, function(server) {
       return ('' + server[key.key]).length;
     })[key.key].length + 5;
+    if (key.key === firstKey && key.max < total.length) {
+      key.max = total.length + 3;
+    }
   });
 
   var table = new Table({
@@ -86,8 +83,9 @@ function displayTable() {
   });
 
   table.push([]);
-  var total = 'Total: ' + status.total + ', Open: ' + status.open + ', Closed: ' + status.closed;
-  table.push([total, '', '']);
+  var totalRule = _.fill(new Array(keys.length), '');
+  totalRule[0] = total;
+  table.push(totalRule);
 
   console.log('\n' + table.toString());
 }
@@ -149,7 +147,7 @@ function processSiteManagerFile (file) {
           return {
             name: name,
             host: host,
-            ip: getIptoNumeric(host)
+            ip: IP.toLong(host)
           };
         })
         .value();
@@ -170,7 +168,16 @@ if (program.timeout) {
   timeout = program.timeout;
 }
 
-if (program.args.length !== 1) {
+if (program.ip) {
+  keys = _.filter(keys, function(key) {
+    return ['host', 'status'].indexOf(key.key) !== -1;
+  });
+  serverList.push({
+    host: program.ip,
+    ip: IP.toLong(program.ip)
+  });
+  getServers();
+} else if (program.args.length !== 1) {
   console.error('no sitemanager.xml');
   exit();
 } else {
