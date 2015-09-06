@@ -6,9 +6,10 @@
 
   Options:
 
-    -h, --help         output usage information
-    -V, --version      output the version number
-    -t, --timeout <n>  Timeout in milliseconds
-    -s, --sort <sort>  Sort by (name|ip|status) default:ip
+    -h, --help             output usage information
+    -V, --version          output the version number
+    -t, --timeout <n>      Timeout in milliseconds
+    -s, --sort <sort>      Sort by (name|ip|status) default:ip
+    -i, --ip <IP ADDRESS>  Test a single ip address
 
 ```
